@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         btn1 = findViewById(R.id.btn1);
 
+        String ravi="";
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +71,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                         if (response.body().getData()!=null){
 
-                                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                            Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                                            intent.putExtra("token",response.body().getData().getToken());
+                                            Log.d("ftyuio", "dfghjkjhgfdfgh"+response.body().getData().getToken());
+                                            startActivity(intent);
+
+
                                         }
 
                                         else {

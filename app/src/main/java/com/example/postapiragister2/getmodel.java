@@ -6,29 +6,30 @@ import com.google.gson.annotations.SerializedName;
 
 public class getmodel {
 
-    @SerializedName("message")
-    @Expose
-    private String message;
 
-    @SerializedName("data")
-    @Expose
-    private Data data;
 
-    public Data getData() {
-        return data;
-    }
+        @SerializedName("message")
+        @Expose
+        private String message;
+        @SerializedName("data")
+        @Expose
+        private Data data;
 
-    public void setData(Data data) {
-        this.data = data;
-    }
+        public String getMessage() {
+            return message;
+        }
 
-    public String getMessage() {
-        return message;
-    }
+        public void setMessage(String message) {
+            this.message = message;
+        }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+        public Data getData() {
+            return data;
+        }
+
+        public void setData(Data data) {
+            this.data = data;
+        }
 
     @Override
     public String toString() {
@@ -46,14 +47,9 @@ public class getmodel {
         @SerializedName("Email")
         @Expose
         private String email;
-
-        @Override
-        public String toString() {
-            return "Data{" +
-                    "name='" + name + '\'' +
-                    ", email='" + email + '\'' +
-                    '}';
-        }
+        @SerializedName("Token")
+        @Expose
+        private String token;
 
         public String getName() {
             return name;
@@ -71,7 +67,24 @@ public class getmodel {
             this.email = email;
         }
 
+        public String getToken() {
+            return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
+        }
+
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "name='" + name + '\'' +
+                    ", email='" + email + '\'' +
+                    ", token='" + token + '\'' +
+                    '}';
+        }
     }
+
 
 
 
