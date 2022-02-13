@@ -18,6 +18,6 @@ public interface Myinterface {
 
     
     @GET("users")
-    Call<OneModel>Onedata(@Header("Authorization")String Authorization, @Query("page")int page);
+    Call<OneModel>retrivedata(@Header("Authorization")String Authorization, @Query("page")int page);
 
 }

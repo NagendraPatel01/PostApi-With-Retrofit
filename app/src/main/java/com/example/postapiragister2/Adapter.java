@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     Context context;
@@ -32,6 +34,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.text1.setText(oneModel.getData().get(position).getName());
         holder.text2.setText(oneModel.getData().get(position).getEmail());
+        Glide.with(context).load("" +oneModel.getData().get(position).getProfilepicture()).into(holder.img);
+
+
 
     }
 

@@ -2,7 +2,9 @@ package com.example.postapiragister2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -33,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         btn1 = findViewById(R.id.btn1);
 
-        String ravi="";
+
+
+        SharedPreferences sharedPreferences=getSharedPreferences("data", Context.MODE_PRIVATE);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +59,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 } else {
 
+
+                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                    editor.putString("email",email.getText().toString());
+                    editor.putString("password",password.getText().toString());
+
+
+
                     SendModel sendModel = new SendModel(email.getText().toString(), password.getText().toString());
 
                     RetrofitClint.getRetrofit()
@@ -66,6 +77,10 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.d("sdfghjk", "awertyuio" + response);
                                     Log.d("sertyuioiuytr", "drtyuiuytre" + response.body());
 
+
+
+
+
                                     if (response.code()==200){
                                         Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -73,8 +88,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                             Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                                             intent.putExtra("token",response.body().getData().getToken());
+                                            editor.putString("tokeni",response.body().getData().getToken());
+                                            editor.commit();
                                             Log.d("ftyuio", "dfghjkjhgfdfgh"+response.body().getData().getToken());
                                             startActivity(intent);
+
+                                            finish();
 
 
                                         }

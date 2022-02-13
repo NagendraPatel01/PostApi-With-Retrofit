@@ -2,7 +2,9 @@ package com.example.postapiragister2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -78,7 +80,6 @@ public class RagisterActivity extends AppCompatActivity {
 
                 else {
 
-
                   PostModel postModel=new PostModel(name.getText().toString(),email.getText().toString()
                   ,password.getText().toString());
 
@@ -92,9 +93,12 @@ public class RagisterActivity extends AppCompatActivity {
 
 
 
+
                             Toast.makeText(RagisterActivity.this, "ragister success", Toast.LENGTH_SHORT).show();
 
                             startActivity(new Intent(RagisterActivity.this,LoginActivity.class));
+
+                            finish();
                         }
 
                         @Override

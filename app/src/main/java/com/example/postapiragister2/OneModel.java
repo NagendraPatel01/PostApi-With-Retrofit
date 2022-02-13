@@ -8,6 +8,7 @@ import java.util.List;
 public class OneModel {
 
 
+
         @SerializedName("data")
         @Expose
         private List<Datum> data = null;
@@ -84,6 +85,8 @@ public class OneModel {
                     '}';
         }
     }
+
+
 
 
 
